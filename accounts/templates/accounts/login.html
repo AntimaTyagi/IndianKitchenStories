@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{%block content %}
+
+<section style="">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-6">
+        <div class="card shadow-2-strong account-card" style="">
+          <div class="card-body p-5 text-center">
+
+            <h2 class="mb-5">Sign in</h2>
+            <p>
+              {% include 'messages.html'%}
+            </p>
+            <form method="post">
+              {% csrf_token %}
+
+              <div class="form-outline mb-4">
+                <input type="email" id="typeEmailX-2" required class="form-control form-control-lg" name="email" />
+                <label class="form-label" for="typeEmailX-2">Email Address</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="password" id="typePasswordX-2" required class="form-control form-control-lg"
+                  name="password" />
+                <label class="form-label" for="typePasswordX-2">Password</label>
+              </div>
+
+              <!-- Checkbox -->
+              <div class="form-check d-flex justify-content-start mb-4">
+                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                <label class="form-check-label" for="form1Example3"> Remember password </label>
+              </div>
+              
+              <button class="btn bueno-btn" type="submit">Login</button>
+            </form>
+            <div class="d-flex flex-column my-4">
+              <a type="button" class="" href="{% url 'accounts:signup' %}">Sign Up</a>
+              <a href="{% url 'password_reset' %}"><i>Forgot Password?</i></a>
+            </div>
+            <hr class="my-4">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</section>
+{% endblock content %}

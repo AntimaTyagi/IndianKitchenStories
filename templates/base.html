@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <!-- Title -->
+  <title>Bueno - Food Blog HTML Template</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/core-img/favicon.ico">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href=" {% static 'css/style.css' %} ">
+  <link rel="stylesheet" href=" {% static 'css/bootstrap4/bootstrap.min.css' %} ">
+  <link rel="stylesheet" href=" {% static 'css/bootstrap4/classy-nav.css' %} ">
+  <link rel="stylesheet" href=" {% static 'css/bootstrap4/owl.carousel.min.css' %} ">
+  <link rel="stylesheet" href=" {% static 'css/bootstrap4/animate.css' %} ">
+  <link rel="stylesheet" href=" {% static 'css/bootstrap4/magnific-popup.css' %} ">
+  <link rel="stylesheet" href=" {% static 'css/bootstrap4/font-awesome.min.css' %} ">
+  <link rel="stylesheet" href=" {% static 'css/bootstrap4/nice-select.css' %} ">
+  <link rel="stylesheet" href=" {% static 'css/tagsinput.css' %} ">
+
+</head>
+
+<body>
+  {% comment %}
+  <!-- Preloader -->
+  <div class="preloader d-flex align-items-center justify-content-center">
+    <div class="preloader-content">
+      <h3>Cooking in progress..</h3>
+      <div id="cooking">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div id="area">
+          <div id="sides">
+            <div id="pan"></div>
+            <div id="handle"></div>
+          </div>
+          <div id="pancake">
+            <div id="pastry"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> {% endcomment %}
+
+  <!-- ##### Header Area Start ##### -->
+
+  {% include '_nav.html' %}
+  {% block content %}
+  {% endblock content %}
+  {% include '_post-area.html' %}
+  <!-- ##### Footer Area Start ##### -->
+  <footer class="footer-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-5">
+          <!-- Copywrite Text -->
+          <p class="copywrite-text"><a href="#">
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;<script>
+                document.write(new Date().getFullYear());
+              </script> All rights reserved | This template is made with <i class="fa fa-heart-o"
+                aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
+        <div class="col-12 col-sm-7">
+          <!-- Footer Nav -->
+          <div class="footer-nav">
+            <ul>
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Recipes</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ##### Footer Area Start ##### -->
+
+  <!-- ##### All Javascript Script ##### -->
+  <!-- jQuery-2.2.4 js -->
+</body>
+
+<script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+<!-- Popper js -->
+<script src=" {% static 'js/bootstrap/popper.min.js' %} "></script>
+<!-- Bootstrap js -->
+<script src=" {% static 'js/bootstrap/bootstrap.min.js' %} "></script>
+<!-- All Plugins js -->
+<script src=" {% static 'js/plugins/plugins.js' %} "></script>
+<!-- Active js -->
+<script src=" {% static 'js/active.js' %}"></script>
+<script src="{% static 'js/tagsinut.js' %}"></script>
+<script>
+  $("#post-form").submit(function (e) {
+    e.preventDefault();
+  });
+</script>
+
+</html>

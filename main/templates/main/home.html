@@ -1,0 +1,361 @@
+{% extends 'base.html' %}
+
+{%block content %}
+{% load static %}
+<div class="treading-post-area" id="treadingPost">
+    <div class="close-icon">
+        <i class="fa fa-times"></i>
+    </div>
+
+    <h4>Treading Post</h4>
+
+    <!-- Single Blog Post -->
+    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+        <!-- Blog Thumbnail -->
+        <div class="blog-thumbnail">
+            <img src="img/bg-img/9.jpg" alt="">
+        </div>
+        <!-- Blog Content -->
+        <div class="blog-content">
+            <a href="#" class="post-tag">The Best</a>
+            <a href="#" class="post-title">Friend eggs with ham</a>
+            <div class="post-meta">
+                <a href="#" class="post-date">July 11, 2018</a>
+                <a href="#" class="post-author">By Julia Stiles</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Blog Post -->
+    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+        <!-- Blog Thumbnail -->
+        <div class="blog-thumbnail">
+            <img src="img/bg-img/10.jpg" alt="">
+        </div>
+        <!-- Blog Content -->
+        <div class="blog-content">
+            <a href="#" class="post-tag">The Best</a>
+            <a href="#" class="post-title">Mushrooms with pork chop</a>
+            <div class="post-meta">
+                <a href="#" class="post-date">July 11, 2018</a>
+                <a href="#" class="post-author">By Julia Stiles</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Blog Post -->
+    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+        <!-- Blog Thumbnail -->
+        <div class="blog-thumbnail">
+            <img src="img/bg-img/11.jpg" alt="">
+        </div>
+        <!-- Blog Content -->
+        <div class="blog-content">
+            <a href="#" class="post-tag">The Best</a>
+            <a href="#" class="post-title">Birthday cake with chocolate</a>
+            <div class="post-meta">
+                <a href="#" class="post-date">July 11, 2018</a>
+                <a href="#" class="post-author">By Julia Stiles</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Blog Post -->
+    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+        <!-- Blog Thumbnail -->
+        <div class="blog-thumbnail">
+            <img src="img/bg-img/9.jpg" alt="">
+        </div>
+        <!-- Blog Content -->
+        <div class="blog-content">
+            <a href="#" class="post-tag">The Best</a>
+            <a href="#" class="post-title">Friend eggs with ham</a>
+            <div class="post-meta">
+                <a href="#" class="post-date">July 11, 2018</a>
+                <a href="#" class="post-author">By Julia Stiles</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Blog Post -->
+    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+        <!-- Blog Thumbnail -->
+        <div class="blog-thumbnail">
+            <img src="img/bg-img/10.jpg" alt="">
+        </div>
+        <!-- Blog Content -->
+        <div class="blog-content">
+            <a href="#" class="post-tag">The Best</a>
+            <a href="#" class="post-title">Mushrooms with pork chop</a>
+            <div class="post-meta">
+                <a href="#" class="post-date">July 11, 2018</a>
+                <a href="#" class="post-author">By Julia Stiles</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Single Blog Post -->
+    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+        <!-- Blog Thumbnail -->
+        <div class="blog-thumbnail">
+            <img src="img/bg-img/11.jpg" alt="">
+        </div>
+        <!-- Blog Content -->
+        <div class="blog-content">
+            <a href="#" class="post-tag">The Best</a>
+            <a href="#" class="post-title">Birthday cake with chocolate</a>
+            <div class="post-meta">
+                <a href="#" class="post-date">July 11, 2018</a>
+                <a href="#" class="post-author">By Julia Stiles</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Treading Post Area End ##### -->
+
+<!-- ##### Hero Area Start ##### -->
+<div class="hero-area">
+    <!-- Hero Post Slides -->
+    <div class="hero-post-slides owl-carousel">
+        <!-- Single Slide -->
+        <div class="single-slide">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <a href="#"><img src="{{recipes.0.img.url}}" alt="" class="ratio ratio-1x1"></a>
+            </div>
+            <!-- Blog Content -->
+            <div class="blog-content-bg">
+                <div class="blog-content">
+                    <a href=" {% url 'recipes:recipe-detail' recipes.0.slug %} "
+                        class="post-tag">{{recipes.0.category}}</a>
+                    <a href="{% url 'recipes:recipe-detail' recipes.0.slug %}"
+                        class="post-title">{{recipes.0.title}}</a>
+                    <div class="post-meta">
+                        <a href="{% url 'recipes:recipe-detail' recipes.0.slug %}"
+                            class="post-date">{{recipes.0.post_date}}</a>
+                        <a href="{% url 'recipes:recipe-detail' recipes.0.slug %}" class="post-author">By
+                            {{recipes.0.author}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="single-slide">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <a href="{% url 'recipes:recipe-detail' recipes.1.slug %}"><img src="{{recipes.1.img.url}}" alt=""
+                        class="ratio ratio-1x1"></a>
+            </div>
+            <!-- Blog Content -->
+            <div class="blog-content-bg">
+                <div class="blog-content">
+                    <a href="{% url 'recipes:recipe-detail' recipes.1.slug %}"
+                        class="post-tag">{{recipes.1.category}}</a>
+                    <a href="{% url 'recipes:recipe-detail' recipes.1.slug %}"
+                        class="post-title">{{recipes.1.title}}</a>
+                    <div class="post-meta">
+                        <a href="{% url 'recipes:recipe-detail' recipes.1.slug %}"
+                            class="post-date">{{recipes.1.post_date}}</a>
+                        <a href="{% url 'recipes:recipe-detail' recipes.1.slug %}" class="post-author">By
+                            {{recipes.1.author}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slide">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <a href="{% url 'recipes:recipe-detail' recipes.2.slug %}"><img src="{{recipes.2.img.url}}" alt=""
+                        class="ratio ratio-1x1"></a>
+            </div>
+
+            <!-- Blog Content -->
+            <div class="blog-content-bg">
+                <div class="blog-content">
+                    <a href="{% url 'recipes:recipe-detail' recipes.2.slug %}"
+                        class="post-tag">{{recipes.2.category}}</a>
+                    <a href="{% url 'recipes:recipe-detail' recipes.2.slug %}"
+                        class="post-title">{{recipes.2.title}}</a>
+                    <div class="post-meta">
+                        <a href="{% url 'recipes:recipe-detail' recipes.2.slug %}"
+                            class="post-date">{{recipes.2.post_date}}</a>
+                        <a href="{% url 'recipes:recipe-detail' recipes.2.slug %}" class="post-author">By
+                            {{recipes.2.author}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slide">
+            <!-- Blog Thumbnail -->
+            <div class="blog-thumbnail">
+                <a href="{% url 'recipes:recipe-detail' recipes.3.slug %}"><img src="{{recipes.3.img.url}}" alt=""
+                        class=""></a>
+            </div>
+
+            <!-- Blog Content -->
+            <div class="blog-content-bg">
+                <div class="blog-content">
+                    <a href="{% url 'recipes:recipe-detail' recipes.3.slug %}"
+                        class="post-tag">{{recipes.3.category}}</a>
+                    <a href="{% url 'recipes:recipe-detail' recipes.0.slug %}"
+                        class="post-title">{{recipes.3.title}}</a>
+                    <div class="post-meta">
+                        <a href="{% url 'recipes:recipe-detail' recipes.3.slug %}"
+                            class="post-date">{{recipes.3.post_date}}</a>
+                        <a href="{% url 'recipes:recipe-detail' recipes.3.slug %}" class="post-author">By
+                            {{recipes.3.author}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- ##### Hero Area End ##### -->
+
+
+<!-- ##### Catagory Area Start ##### -->
+<div class="post-catagory section-padding-100-0 mb-70">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Single Post Catagory -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="single-post-catagory mb-30">
+                    <img src="{{catigories.0.icon.url}}" alt="">
+                    <!-- Content -->
+                    <div class="catagory-content-bg">
+                        <div class="catagory-content">
+                            <a href="{% url 'recipes:category' catigories.0.categoryname%}" class="post-tag">The
+                                Best</a>
+                            <a href="{% url 'recipes:category' catigories.0.categoryname%}"
+                                class="post-title">{{catigories.0.categoryname}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Post Catagory -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="single-post-catagory mb-30">
+                    <img src="{{catigories.1.icon.url}}" alt="">
+                    <!-- Content -->
+                    <div class="catagory-content-bg">
+                        <div class="catagory-content">
+                            <a href="{% url 'recipes:category' catigories.1.categoryname%}" class="post-tag">The
+                                Best</a>
+                            <a href="{% url 'recipes:category' catigories.1.categoryname%}"
+                                class="post-title">{{catigories.1.categoryname}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Post Catagory -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="single-post-catagory mb-30">
+                    <img src="{{catigories.2.icon.url}}" alt="">
+                    <!-- Content -->
+                    <div class="catagory-content-bg">
+                        <div class="catagory-content">
+                            <a href="{% url 'recipes:category' catigories.2.categoryname%}" class="post-tag">The
+                                Best</a>
+                            <a href="{% url 'recipes:category' catigories.2.categoryname%}"
+                                class="post-title">{{catigories.2.categoryname}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Catagory Area End ##### -->
+
+<!-- ##### Big Posts Area Start ##### -->
+<div class="big-posts-area mb-50">
+    <div class="container">
+        <!-- Single Big Post Area -->
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6">
+                <div class="big-post-thumbnail mb-50">
+                    <img src="{{recipes.0.img.url}}" alt="">
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="big-post-content text-center mb-50">
+                    <a href="#" class="post-tag">{{recipes.1.category}}</a>
+                    <a href="#" class="post-title">{{recipes.0.title}}</a>
+                    <div class="post-meta">
+                        <a href="#" class="post-date">{{recipes.0.post_date}}</a>
+                        <a href="#" class="post-author">By {{recipes.0.author}}</a>
+                    </div>
+                    <p>{{recipes.0.body|truncatewords:50}}</p>
+                    <a href=" {% url 'recipes:recipe-detail' recipes.0.slug%} " class="btn bueno-btn">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Big Post Area -->
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6">
+                <div class="big-post-content text-center mb-50">
+                    <a href="#" class="post-tag">{{recipes.1.category}}</a>
+                    <a href="#" class="post-title">{{recipes.1.title}}</a>
+                    <div class="post-meta">
+                        <a href="#" class="post-date">{{recipes.1.post_date}}</a>
+                        <a href="#" class="post-author">By {{recipes.1.author}}</a>
+                    </div>
+                    <p>{{recipes.1.body|truncatewords:50}}</p>
+                    <a href="{% url 'recipes:recipe-detail' recipes.1.slug %}" class="btn bueno-btn">Read More</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="big-post-thumbnail mb-50">
+                    <img src="{{recipes.1.img.url}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Big Posts Area End ##### -->
+
+<!-- ##### Posts Area End ##### -->
+<div class="bueno-post-area mb-70">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Post Area -->
+            <div class="col-12 col-lg-8 col-xl-9">
+                <!-- Single Blog Post -->
+
+                {% for item in latest %}
+                <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+                    <!-- Blog Thumbnail -->
+                    <div class="blog-thumbnail">
+                        <img src="{{item.image.url}}" alt="">
+                    </div>
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+                        <a href="{% url 'blogs:blog-details' item.slug %}" class="post-tag">{{item.categories}}</a>
+                        <a href="{% url 'blogs:blog-details' item.slug %}" class="post-title">{{item.title}}</a>
+                        <div class="post-meta">
+                            <a href="{% url 'blogs:blog-details' item.slug %}"
+                                class="post-date">{{item.published_on}}</a>
+                            <a href="{% url 'blogs:blog-details' item.slug %}" class="post-author">By
+                                {{item.author}}</a>
+                        </div>
+                        <p>{{item.description|truncatewords:20}}</p>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+            {% include '_sidebar.html' %}
+        </div>
+    </div>
+</div>
+<!-- ##### Posts Area End ##### -->
+
+
+<!-- ##### Footer Area Start ##### -->
+
+{% endblock content %}
