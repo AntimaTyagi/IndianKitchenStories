@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section style="">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+        <div class="card account-card shadow-2-strong" style=";">
+          <div class="card-body p-5 text-center">
+
+            <h2 class="mb-5">Sign Up</h2>
+            {% include 'messages.html'%}
+            {% if form.errors %}
+            {{ form.errors }}
+            {% endif %}
+            <form method="post">
+              {% csrf_token %}
+
+
+              <div class="form-outline mb-4">
+                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" name="email" />
+                <label class="form-label" for="typeEmailX-2">Email</label>
+              </div>
+
+
+              <div class="form-outline mb-4">
+                <input type="password" id="typeEmailX-2" class="form-control form-control-lg" name="password1" />
+                <label class="form-label" for="typeEmailX-2">Password</label>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="password" id="typeEmailX-2" class="form-control form-control-lg" name="password2" />
+                <label class="form-label" for="typeEmailX-2">Password Confirmation</label>
+              </div>
+
+
+              <!-- Checkbox -->
+              <button class="btn bueno-btn" type="submit">Sign up</button>
+            </form>
+            <hr class="my-4">
+            <a type="button" class="" href="{% url 'accounts:login' %}">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% load static %}
+<!-- Sidebar Area -->
+<div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
+    <div class="sidebar-area">
+        <!-- Single Widget Area -->
+        <div class="single-widget-area add-widget mb-30">
+            <img src=" {% static 'img/bg-img/add.png' %} " alt="">
+        </div>
+        <!-- Single Widget Area -->
+        <div class="single-widget-area post-widget">
+            <!-- Single Post Area -->
+            {% for item in recipes %}
+            <div class="single-post-area d-flex">
+                <!-- Blog Thumbnail -->
+                <div class="blog-thumbnail">
+                    <img src="{{item.img.url}}" alt="">
+                </div>
+                <!-- Blog Content -->
+                <div class="blog-content">
+                    <a href=" {% url 'recipes:recipe-detail' item.slug %} " class="post-title">{{item.title}}</a>
+                    <div class="post-meta">
+                        <a href="{% url 'recipes:recipe-detail' item.slug %}" class="post-date">{{item.post_date}}</a>
+                        <a href="{% url 'recipes:recipe-detail' item.slug %}" class="post-author">By {{item.author}}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>

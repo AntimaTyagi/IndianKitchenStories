@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block title %}
+{% endblock %}
+{% block content %}
+{% load static %}
+
+<section class="bueno-post-area my-5">
+    <div class="container">
+      <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 col-xl-9">
+                  <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                      <div id="myImg">
+                        <img src="{{object.image.url}}" alt="" id="blah" class="page-header-carouser w-100" data-parallax="true">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                </div>
+                            </div>
+                        </div>
+                      </div>                    
+                   
+                    <div class="p-2">
+                        <div class="row">
+                            <div class="col">
+                                <label for="id_file">File:</label> Currently:
+                  
+                  
+                                <a href="{{ object.image.url}}">{{ object.image.url}}</a>
+                            </div>
+                  
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_file" class="form-label">Change the photo: <small
+                                    class="text-secondary">*optional</small></label>
+                            <input type="file" class="form-control" name="image" accept="image/*" id="id_file">
+                  
+                        </div>
+                      </div>
+                  
+                      <div class="p-2">
+                        <label for="id_title">Title:</label>
+                        <input type="text" name="title" maxlength="50" required="" id="id_title" value="{{object.title}}" />
+                      </div>
+
+                      <div class="p-2">
+                        <label for="id_description">Description:</label>
+                        <textarea
+                          name="description"
+                          cols="40"
+                          rows="10"
+                          required=""
+                          id="id_description"
+                          value=""
+                        ></textarea>
+                      </div>
+                    
+                      <div class="p-2">
+                        <label for="id_is_published">Is published:</label>
+                        <input type="checkbox" name="is_published" id="id_is_published"    />
+                      </div>
+
+                      <div class="p-2">
+                        <label for="id_categories">Categories:</label>
+                        <select name="categories" id="id_categories">
+                          <option value="" selected="">---------</option>
+                           {% for Cat in Category  %}
+                          <option value="{{Cat.id}}">{{Cat.title}}</option>
+                          {% endfor %}
+                          
+                        </select>
+                      </div>
+                      <button type="submit" value="Submit" class="mb-5 btn bueno-btn">submit</button>
+                  </form>
+
+
+                 
+               
+                </div>
+                {% include '_sidebar.html' %}
+              </div>   
+            
+    </div>
+</section>
+
+
+<script>
+  function openfileDialog() {
+      $("#id_file").click();
+  }
+</script>
+<script>
+  function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+              $('#myImg').css("background-image", "url('https://sebhastian.com/img/default.png')");
+
+          };
+          console.log("Hello world!");
+
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
+  id_file.onchange = evt => {
+      const [file] = id_file.files
+      if (file) {
+          blah.src = URL.createObjectURL(file)
+      }
+  }
+</script>
+{% endblock %}
+
+           

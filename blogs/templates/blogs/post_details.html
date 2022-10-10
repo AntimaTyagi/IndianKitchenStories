@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{%block content %}
+<div class="bueno-post-area my-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Post Area -->
+            <div class="col-12 col-lg-8 col-xl-9">
+                <div class="post-details-content mb-100">
+                    <div class="blog-thumbnail mb-50">
+                        <img src="{{object.image.url}}" alt="">
+                    </div>
+                    <div class="mb-4">
+                        {% if user.is_authenticated %}
+                        {% if user.id == object.author.id %}
+                        <small><a href="update/{{object.slug}}/" class="edit btn">Edit Blog
+                                Post</a> 
+                        </small>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+
+                    <div class="blog-content">
+                        <a href="#" class="post-tag">{{object.categories}}</a>
+                        <h4 class="post-title">{{object.title}}</h4>
+                        <div class="post-meta mb-50">
+                            <a href="#" class="post-date">{{object.published_on }} </a>
+                            <a href="#" class="post-author">{{object.author.first_name }} {{object.author.last_name }}</a>
+                        </div>
+                       
+                        <p>{{object.description}}</p>
+                    </div>
+                </div>
+                
+                <!-- Comment Area Start -->
+                <div class="comment_area clearfix mb-100">
+                    <h4 class="mb-50">Comments</h4>
+                                   
+                    <ol>
+                        <!-- Single Comment Area -->
+                        {% for com in comments %}
+                        <li class="single_comment_area">
+                            <!-- Comment Content -->
+                            <div class="comment-content d-flex">
+                                <!-- Comment Author -->
+                                <div class="comment-author">
+                                    <img src="/Media/{{com.commenter.profile_photo}}" alt="author">
+                                </div>
+                                <!-- Comment Meta -->
+                                <div class="comment-meta">
+                                    <div class="d-flex">
+                                        <a href="#" class="post-author">{{com.commenter.email}}</a>
+                                        <a href="#" class="post-date">{{com.created_date}}</a>
+                                        {% comment %} <a href="#" class="reply">Reply</a> {% endcomment %}
+                                    </div>
+                                    <p>{{com.comment}}</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+
+                <div class="post-a-comment-area mb-30 clearfix">
+                    <h4 class="mb-50">Leave a Comments</h4>
+                    <!-- Reply Form -->
+                    {% if user.is_authenticated %}
+                        <div class="contact-form-area">
+                            <form action="#" method="POST" enctype="multipart/form-data" >
+                                 {% csrf_token %}
+                                    
+                                <div class="row">
+                                    <div class="col-12">
+                                         <textarea  name="comment" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn bueno-btn mt-30" type="submit">Submit Comment</button>
+                                    </div>                                
+                                </div>
+                            </form>
+                        </div>
+                    {% else %}
+                    <div class="container">
+                        <h4><a href="{% url 'accounts:login' %}">Login</a> to  comments below.</h4>   
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Sidebar Area -->
+             {% comment %} <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
+                <div class="sidebar-area">
+
+                    <div class="single-widget-area author-widget mb-30">
+                        <div class="background-pattern bg-img" style="background-image: url(/Media/pattern2.png);">
+                            <div class="author-thumbnail">
+                                <img src="/Media/{{object.author.profile_photo}}" alt="" class="img-fluid">
+                            </div>
+                            <p>My name is <span>{{object.author.first_name }} {{object.author.last_name }}</span>, I’m a passionate cook with a love for vegan food.</p>
+                        </div>  
+                    </div>
+                    <!-- Single Widget Area -->
+                    <div class="single-widget-area add-widget mb-30">
+                        <img src="img/bg-img/add.png" alt="">
+                    </div>
+                   
+                    <!-- Single Widget Area -->
+                    
+                </div>
+            </div> {% endcomment %} 
+            {% include '_sidebar.html' %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

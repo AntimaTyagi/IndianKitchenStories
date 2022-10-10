@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_title">Title</label>
+        <input class="form-control" type="text" name="title" maxlength="255" required="" id="id_title">
+    </div>
+    <div class="form-group">
+        <label for="id_img">Image</label>
+        <input type="file" name="img" accept="image/*" required="" id="id_img">
+    </div>
+    <div class="form-group">
+        <label for="id_body">Title</label>
+        <textarea class="form-control" type="text" name="body" cols="40" rows="10" required="" id="id_body"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="id_ingredients">Tags</label>
+        <input data-role="tagsinput" class="form-control" type="text" name="ingredients" required=""
+            id="id_ingredients">
+    </div>
+    <p>
+        <label for="id_category">Category:</label> <select name="category" required="" id="id_category"
+            style="display: none;">
+            <option value="" selected="">---------</option>
+
+            <option value="1">Sweets</option>
+
+            <option value="2">Vegan</option>
+
+            <option value="3">vegiterian</option>
+
+        </select>
+        <div class="nice-select" tabindex="0"><span class="current">Sweets</span>
+            <ul class="list">
+                <li data-value="" class="option focus">---------</li>
+                <li data-value="1" class="option selected">Sweets</li>
+                <li data-value="2" class="option">Vegan</li>
+                <li data-value="3" class="option">vegiterian</li>
+            </ul>
+        </div>
+    </p>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% endblock content %}

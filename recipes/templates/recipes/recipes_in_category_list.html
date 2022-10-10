@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- ##### Search Area Start ##### -->
+<div class="bueno-search-area section-padding-100-0 pb-70 bg-img"
+  style="background-image: url(img/core-img/pattern.png);">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form action="" method="post">
+
+          <div class="row">
+            <div class="col-12 col-sm-6 col-lg-3 d-flex mx-auto">
+              <div class="form-group mb-30 col-12">
+                <select class="form-control col-12 " id="recipe" name="recipe" onchange="location = this.value;">
+                  <option value="{% url 'recipes:recipe'%}">All</option>
+                  {% for item in cat_list %}
+                  <option value="{% url 'recipes:category' item.categoryname%}">{{item.categoryname}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ##### Search Area End ##### -->
+
+<!-- ##### Catagory Post Area Start ##### -->
+<div class="catagory-post-area section-padding-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Post Area -->
+      <div class="col-12 col-lg-8 col-xl-9">
+        <!-- Single Blog Post -->
+        {% for item in category_posts %}
+        <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+          <!-- Blog Thumbnail -->
+          <div class="blog-thumbnail">
+            <img src="{{item.img.url}}" alt="">
+          </div>
+          <!-- Blog Content -->
+          <div class="blog-content">
+            <a href="{% url 'recipes:category' item.category %}" class="post-tag">{{item.category}}</a>
+            <a href="{% url 'recipes:recipe-detail' item.slug %}" class="post-title">{{item.title}}</a>
+            <div class="post-meta">
+              <div class="post-date blockquote-footer">{{item.post_date}}</div>
+              <div class="post-author blockquote-footer">By {{item.author}}</div>
+            </div>
+            <p>{{item.body|truncatewords:30}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Sidebar Area -->
+      {% include '_sidebar.html' %}
+      <div class="row">
+        <div class="col-12">
+          <div class="pagination-area mt-70">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                {% if category_posts.has_previous %}
+                <li class="page-item"><a class="page-link"
+                    href="?page={{ category_posts.previous_page_number }}">Pre</a></li>
+                {% endif %}
+
+                <li class="page-item active"><a class="page-link " href="#">{{ category_posts.number }}</a></li>
+
+                {% if category_posts.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ category_posts.next_page_number }}">Next</a>
+                </li>
+                {% endif %}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <!-- Single Widget Area -->
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

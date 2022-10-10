@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{%block content %}
+
+<div class="bueno-post-area my-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Post Area -->
+            <div class="col-12 col-lg-8 col-xl-9">
+                {% for obj in page_obj %}
+                <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+                    <!-- Blog Thumbnail -->
+                    <div class="blog-thumbnail">
+                        <img src="/Media/{{obj.image}}" alt="">
+                    </div>
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+                        <a href="/blogs/{{obj.slug}}" class="post-tag">{{obj.categories}}</a>
+                        <a href="/blogs/{{obj.slug}}" class="post-title">{{obj.title}}</a>
+                        <div class="post-meta">
+                            <a href="/blogs/{{obj.slug}}" class="post-date">{{obj.published_on}}</a>
+                            <a href="/blogs/{{obj.slug}}" class="post-author">{{obj.author.first_name}} {{obj.author.last_name}}</a>
+                        </div>
+                        <p>{{obj.description|slice:":275"}}...
+                            <a href="/blogs/{{obj.slug}}">Read More</a>
+                        </p>
+                    </div>
+                </div>
+                {% endfor %}
+                    <!-- Pagination  -->
+                    <div class="d-flex justify-content-center aligns-items-center">
+                        <nav aria-label="Pagination" class="pt-5">
+                          <ul class="pagination">
+                            <li class="page-item">
+                              {% if page_obj.number == 1 %}
+                                {% else %}
+                            <li class="page-item"><a class="page-link active sr-only" href="?page={{ page_obj.number|add:-1 }}">Previous</a></li>
+                                {% endif %}
+                                  {% for i in page_obj.paginator.page_range %}
+                                      {% if page_obj.number == i %}
+                                        <li class="page-item active" aria-current="page">               
+                                          <span class="page-link">({{ i }})<span class="sr-only"></span></span>                       
+                                        </li>
+                                      {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5' %}           
+                                        <li class="page-item">
+                                          <a class="page-link" href="?page={{ i }}{{ query_string }}">{{ i }}</a>
+                                        </li>
+                        
+                                      {% endif %}
+                                  {% endfor %}
+                              {% if page_obj.number == page_obj.paginator.num_pages %}
+                              {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.number|add:1 }}">Next</a></li>
+                          {% endif %}
+                          </ul>
+                          </nav>
+                     </div>
+                   
+            </div>
+
+            <!-- Sidebar Area -->
+            {% include '_sidebar.html' %}
+            {% comment %} <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
+                <div class="sidebar-area">
+
+                    <div class="single-widget-area author-widget mb-30">
+                        <div class="background-pattern bg-img" style="background-image: url(/Media/pattern2.png);">
+                            <div class="author-thumbnail">
+                                <img src="/Media/{{page_obj.author.profile_photo}}" alt="" class="img-fluid">
+                            </div>
+                            <p>My name is <span>{{page_obj.author.first_name}} {{object.author.last_name }}</span>, I’m a passionate cook with a love for vegan food.</p>
+                        </div>
+                        <div class="social-info">
+                            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <!-- Single Widget Area -->
+                    <div class="single-widget-area add-widget mb-30">
+                        <img src="img/bg-img/add.png" alt="">
+                    </div>
+
+                    <!-- Single Widget Area -->
+
+                </div>
+            </div> {% endcomment %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

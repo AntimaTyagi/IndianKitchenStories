@@ -1,0 +1,41 @@
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+        <div class="container">
+  
+          <div class="section-title" data-aos="fade-up">
+            <h2>Testimonials</h2>
+            <p>Magnam dolores commodi suscipit eum quidem consectetur velit</p>
+          </div>
+
+          
+          <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+           
+            <div class="swiper-wrapper">
+              {% for object in feedback_list %}
+              <div class="swiper-slide">
+               
+                <div class="testimonial-wrap">
+                  <div class="testimonial-item">
+                    <img src="/Media/{{object.3}}" class="testimonial-img" alt="">
+                    <h3>{{object.1}} {{object.2}} </h3>
+                    <h4>Ceo &amp; Founder</h4>
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      {{object.0}}
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>          
+                  </div>
+                </div>
+                
+              </div><!-- End testimonial item -->  
+  
+              {% endfor %}
+            </div>
+            
+            <div class="swiper-pagination"></div>
+            
+          </div>
+         
+        </div>
+    </section><!-- End Testimonials Section -->
+
